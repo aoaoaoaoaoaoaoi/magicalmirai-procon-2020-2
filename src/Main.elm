@@ -59,10 +59,11 @@ view : Model -> Html Msg
 view model =
     div []
         [ Html.form [ onSubmit Submit ]
-            [ datalist [ value model.input, onInput Input ]
-                [ option [ value "https://www.youtube.com/watch?v=ygY2qObZv24" ] [ text "https://www.youtube.com/watch?v=ygY2qObZv24" ]
-                , option [ value "https://www.youtube.com/watch?v=a-Nf3QUFkOU" ] [ text "https://www.youtube.com/watch?v=a-Nf3QUFkOU" ]
-                , option [ value "https://www.youtube.com/watch?v=XSLhsjepelI" ] [ text "https://www.youtube.com/watch?v=XSLhsjepelI" ]
+            [ input [ attribute "autocomplete" "on", list "songs", name "songUrl", attribute "size" "50", type_ "text" ] []
+            , datalist [ id "songs", value model.input, onInput Input ]
+                [ option [ value "https://www.youtube.com/watch?v=ygY2qObZv24" ] []
+                , option [ value "https://www.youtube.com/watch?v=a-Nf3QUFkOU" ] []
+                , option [ value "https://www.youtube.com/watch?v=XSLhsjepelI" ] []
                 ]
             , button
                 []
